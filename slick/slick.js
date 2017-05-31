@@ -71,6 +71,7 @@
                 respondTo: 'window',
                 responsive: null,
                 rows: 1,
+                forceBuildRows: false,
                 rtl: false,
                 slide: '',
                 slidesPerRow: 1,
@@ -558,7 +559,7 @@
         newSlides = document.createDocumentFragment();
         originalSlides = _.$slider.children();
 
-        if(_.options.rows > 0) {
+        if(_.options.rows > 1 || _.options.forceBuildRows) {
 
             slidesPerSection = _.options.slidesPerRow * _.options.rows;
             numOfSlides = Math.ceil(
@@ -812,7 +813,7 @@
 
         var _ = this, originalSlides;
 
-        if(_.options.rows > 0) {
+        if(_.options.rows > 1 || _.options.forceBuildRows) {
             originalSlides = _.$slides.children().children();
             originalSlides.removeAttr('style');
             _.$slider.empty().append(originalSlides);
